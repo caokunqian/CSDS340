@@ -54,6 +54,22 @@ test_accuracy = accuracy_score(y_test, y_pred)
 print(f"Best Model: {best_model_name}\nTest Accuracy: {test_accuracy:.2%}")
 
 
+for name, pipeline in pipelines.items():
+    # Using GridSearchCV for hyperparameter tuning
+    grid_search = GridSearchCV(estimator=pipeline, param_grid=param_grid[name], cv=10, scoring='accuracy')
+    grid_search.fit(X_train, y_train)
+    cv_scores[name] = grid_search.best_score_
+    best_estimators[name] = grid_search.best_estimator_
+    # Print the best parameters for each model
+    print(f"Best parameters for {name}: {grid_search.best_params_}")
+
+
+
+
+
+
+
+
 def plot_validation_curve_for_best_model(best_model_name, X_train, y_train):
     if best_model_name == 'lr':
         param_name = 'classifier__C'
