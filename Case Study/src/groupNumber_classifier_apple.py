@@ -9,8 +9,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 
 # Load the dataset
-data_path = 'train.csv'
-data = pd.read_csv(data_path)
+data = pd.read_csv('D:/University/Course/Grade4/CSDS340/Case Study/code/train.csv')
 
 # Separating features and label
 X = data.iloc[:,0:-1].values  # Assuming the last column is the label

@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-df = pd.read_csv('train.csv')
+df = pd.read_csv('D:/University/Course/Grade4/CSDS340/Case Study/code/train.csv')
 
 X = df.iloc[:, :-1].values
 y = df.iloc[:, -1].values

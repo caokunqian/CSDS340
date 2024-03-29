@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
 
 # Load the dataset
-data_path = 'train.csv'
+data_path = 'D:/University/Course/Grade4/CSDS340/Case Study/code/train.csv'
 data = pd.read_csv(data_path)
 
 # Separating features and label

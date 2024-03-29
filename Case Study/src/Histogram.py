@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('train.csv')
+df = pd.read_csv('D:/University/Course/Grade4/CSDS340/Case Study/code/train.csv')
 
 feature_names = df.columns[:-1] 
 output_name = df.columns[-1]
