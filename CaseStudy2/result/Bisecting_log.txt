@@ -1,0 +1,13 @@
+Adjusted Rand Index Baseline Score of set1.csv: 0.2422
+Adjusted Rand Index Baseline Score of set2.csv: 0.3335
+Bisecting K-Means Parameters - Max Depth: 1, Equivalent Clusters: 2, File: set1.csv, ARI: 0.1210
+Bisecting K-Means Parameters - Max Depth: 2, Equivalent Clusters: 4, File: set1.csv, ARI: 0.1870
+Bisecting K-Means Parameters - Max Depth: 3, Equivalent Clusters: 8, File: set1.csv, ARI: 0.1969
+Bisecting K-Means Parameters - Max Depth: 4, Equivalent Clusters: 16, File: set1.csv, ARI: 0.2109
+Bisecting K-Means Parameters - Max Depth: 5, Equivalent Clusters: 32, File: set1.csv, ARI: 0.2215
+Bisecting K-Means Parameters - Max Depth: 1, Equivalent Clusters: 2, File: set2.csv, ARI: 0.1817
+Bisecting K-Means Parameters - Max Depth: 2, Equivalent Clusters: 4, File: set2.csv, ARI: 0.4142
+Bisecting K-Means Parameters - Max Depth: 3, Equivalent Clusters: 8, File: set2.csv, ARI: 0.3895
+Bisecting K-Means Parameters - Max Depth: 4, Equivalent Clusters: 16, File: set2.csv, ARI: 0.3508
+Bisecting K-Means Parameters - Max Depth: 5, Equivalent Clusters: 32, File: set2.csv, ARI: 0.2879
+Best Bisecting K-Means score: 0.4142 with Max Depth: 2

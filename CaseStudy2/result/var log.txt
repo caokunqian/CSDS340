@@ -1,0 +1,16 @@
+DBSCAN
+0.2 4
+
+GMM：
+31/33 diag
+37 full
+
+Hierarchical:
+
+n_clusters: 16, Linkage: ward, File: set1.csv, ARI: 0.2800
+
+Birch
+33,0.2
+
+Bisecting
+

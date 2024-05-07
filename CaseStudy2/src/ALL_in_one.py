@@ -47,7 +47,7 @@ def evaluate():
     #plot_clusters(csv_path, labels_pred)
 
 '''
-Plot
+We only add following code, keep above unchanged
 '''
 def plot_clusters(csv_path, labels_pred, method_name):
     df = pd.read_csv(csv_path)
@@ -57,7 +57,6 @@ def plot_clusters(csv_path, labels_pred, method_name):
     plt.title(f'{method_name} Cluster Visualization for {csv_path}')
     plt.show()
 
-
 def load_and_preprocess_data(csv_path):
     df = pd.read_csv(csv_path, converters={'SEQUENCE_DTTM': hh_mm_ss2seconds})
     selected_features = ['SEQUENCE_DTTM', 'LAT', 'LON', 'SPEED_OVER_GROUND', 'COURSE_OVER_GROUND']
@@ -65,7 +64,6 @@ def load_and_preprocess_data(csv_path):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
     return X_scaled
-
 
 '''
 DBSCAN
@@ -82,7 +80,7 @@ Gaussian Mixture Models (GMM)
 def predictor_gmm(csv_path):
     X_scaled = load_and_preprocess_data(csv_path)
     # GMM clustering
-    gmm = GaussianMixture(n_components=30, random_state=123)  # Adjust n_components as needed
+    gmm = GaussianMixture(n_components=20, random_state=123)  # Adjust n_components as needed  
     gmm.fit(X_scaled)
     labels_pred = gmm.predict(X_scaled)
     return labels_pred
@@ -93,7 +91,7 @@ Hierarchical Clustering
 def predictor_hierarchical(csv_path):
     X_scaled = load_and_preprocess_data(csv_path)
     # Hierarchical clustering
-    clustering = AgglomerativeClustering(n_clusters=20)  # Adjust n_clusters as needed
+    clustering = AgglomerativeClustering(n_clusters=10)  # Adjust n_clusters as needed
     labels_pred = clustering.fit_predict(X_scaled)
     return labels_pred
 
@@ -162,11 +160,11 @@ def get_predict_score1():
     file_names = ['set1.csv', 'set2.csv']
     methods = {
         #Those method have high acc
-        'DBSCAN': predictor_dbscan, 
+        #'DBSCAN': predictor_dbscan, 
         'GMM': predictor_gmm,
         'Hierarchical': predictor_hierarchical,
-        'BIRCH': predictor_birch,
-        'Bisecting K-Means': predictor_bisecting_kmeans  
+       # 'BIRCH': predictor_birch,
+        #'Bisecting K-Means': predictor_bisecting_kmeans  
     }
     for file_name in file_names:
         csv_path = './Data/' + file_name
@@ -199,7 +197,7 @@ def get_predict_score2():
 if __name__=="__main__":
     get_baseline_score()
     #evaluate()
-    get_predict_score2()
+    get_predict_score1()
     
 
 
