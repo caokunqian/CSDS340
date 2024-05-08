@@ -29,7 +29,7 @@ def predictor_baseline(csv_path):
     return labels_pred
 
 def get_baseline_score():
-    file_names = ['set1.csv', 'set2.csv']
+    file_names = ['set1.csv', 'set2.csv','set4.csv']
     for file_name in file_names:
         csv_path = './Data/' + file_name
         labels_true = pd.read_csv(csv_path)['VID'].to_numpy()
@@ -71,7 +71,7 @@ DBSCAN
 def predictor_dbscan(csv_path):
     X_scaled = load_and_preprocess_data(csv_path)
     # DBSCAN clustering
-    clustering = DBSCAN(eps=0.1, min_samples=2).fit(X_scaled)
+    clustering = DBSCAN(eps=0.5, min_samples=7).fit(X_scaled)
     labels_pred = clustering.labels_
     return labels_pred
 '''
@@ -91,7 +91,7 @@ Hierarchical Clustering
 def predictor_hierarchical(csv_path):
     X_scaled = load_and_preprocess_data(csv_path)
     # Hierarchical clustering
-    clustering = AgglomerativeClustering(n_clusters=10)  # Adjust n_clusters as needed
+    clustering = AgglomerativeClustering(n_clusters=16)  # Adjust n_clusters as needed n_clusters: 16, Linkage: ward, File: set1.csv, ARI: 0.2800
     labels_pred = clustering.fit_predict(X_scaled)
     return labels_pred
 
@@ -102,15 +102,6 @@ def predictor_spectral(csv_path):
     X_scaled = load_and_preprocess_data(csv_path)
     # Spectral clustering
     clustering = SpectralClustering(n_clusters=20, random_state=123, affinity='nearest_neighbors')
-    labels_pred = clustering.fit_predict(X_scaled)
-    return labels_pred
-
-'''
-Affinity Propagation
-'''
-def predictor_affinity_propagation(csv_path):
-    X_scaled = load_and_preprocess_data(csv_path)
-    clustering = AffinityPropagation(damping=0.9, preference=-50)
     labels_pred = clustering.fit_predict(X_scaled)
     return labels_pred
 
@@ -157,14 +148,14 @@ You can uncomment # to see those methods, there are 9 in total
 '''
 
 def get_predict_score1():
-    file_names = ['set1.csv', 'set2.csv']
+    file_names = ['set1.csv', 'set2.csv','set4.csv']
     methods = {
         #Those method have high acc
-        #'DBSCAN': predictor_dbscan, 
+        'DBSCAN': predictor_dbscan, 
         'GMM': predictor_gmm,
         'Hierarchical': predictor_hierarchical,
-       # 'BIRCH': predictor_birch,
-        #'Bisecting K-Means': predictor_bisecting_kmeans  
+        'BIRCH': predictor_birch,
+        'Bisecting K-Means': predictor_bisecting_kmeans  
     }
     for file_name in file_names:
         csv_path = './Data/' + file_name
@@ -177,10 +168,9 @@ def get_predict_score1():
 
 
 def get_predict_score2():
-    file_names = ['set1.csv', 'set2.csv']
+    file_names = ['set1.csv', 'set2.csv','set4.csv']
     methods = {
         #Those method have low acc, Affinity and Mean-shift need long time to run
-        'Affinity Propagation': predictor_affinity_propagation,
         'Mean-Shift': predictor_mean_shift,
         'OPTICS': predictor_optics,
         'Spectral': predictor_spectral,
@@ -198,6 +188,7 @@ if __name__=="__main__":
     get_baseline_score()
     #evaluate()
     get_predict_score1()
+    get_predict_score2()
     
 
 
